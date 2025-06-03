@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle de Gastos</title>
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+    <header>
+        <h1>Controle de Gastos</h1>
+    </header>
+
+    <main>
+        <!-- formulário de cadastro-->
+         <section class="form-container">
+            <h2>Adicionar Despesa</h2>
+            <form id="form-despesa">
+                <label>Data:
+                    <input type="date" id="data" required>
+                </label>
+                <label>Categoria:
+                    <input type="text" id="categoria" placeholder="EX.: Alimentação" required>
+                </label>
+                <label>Valor (R$):
+                    <input type="number" id="valor" step="0.01" required>
+                </label>
+                <label>Descrição:
+                    <input type="text" id="descricao" placeholder="opcional">
+                </label>
+                <button type="submit">Adicionar</button>
+            </form>
+        </section>
+
+        <!-- Tabela de despesas -->
+         <section>
+            <h2>Despesas</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Data</th>
+                        <th>categoria</th>
+                        <th>valor (R$)</th>
+                        <th>Descrição</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="tabela-despesas">
+                    <!-- Dados aparecem aqui -->
+                </tbody>
+            </table>
+         </section>
+
+         <!--Total de Gastos-->
+         <section class="tota-section">
+            <h2>Total de Gastos: R$ <span id="total">0.00</span></h2>
+         </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
