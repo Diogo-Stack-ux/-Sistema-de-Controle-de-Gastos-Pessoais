@@ -32,8 +32,29 @@ const deleteDespesa = async (req, res) => {
     }
 };
 
+const updateDespesa = async (req, res) => {
+    const { id } = req.params;
+    const { data, categoria, valor, descricao } = req.body;
+
+    try {
+        const result = await pool.query(
+            'UPDATE despesas SET data = $1, categoria = $2, valor = $3, descricao = $4 WHERE id = $5 RETURNING *',
+            [data, categoria, valor, descricao, id]
+        );
+
+        if (result.rowCount === 0) {
+            return res.status(404).json({ error: 'Despesa não encontrada' });
+        }
+
+        res.json(result.rows[0]);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
+
 module.exports = {
     getDespesas,
     addDespesa,
-    deleteDespesa
+    deleteDespesa,
+    updateDespesa 
 };

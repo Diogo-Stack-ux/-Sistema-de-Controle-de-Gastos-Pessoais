@@ -5,43 +5,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Controle de Gastos</title>
     <link rel="stylesheet" href="style.css">
-    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
+
     <header>
         <h1>Controle de Gastos</h1>
     </header>
 
     <main>
-        <!-- formulário de cadastro-->
-         <section class="form-container">
+        <!-- Formulário de Cadastro -->
+        <section class="form-container">
             <h2>Adicionar Despesa</h2>
             <form id="form-despesa">
                 <label>Data:
                     <input type="date" id="data" required>
                 </label>
                 <label>Categoria:
-                    <input type="text" id="categoria" placeholder="EX.: Alimentação" required>
+                    <input type="text" id="categoria" placeholder="Ex.: Alimentação" required>
                 </label>
                 <label>Valor (R$):
                     <input type="number" id="valor" step="0.01" required>
                 </label>
                 <label>Descrição:
-                    <input type="text" id="descricao" placeholder="opcional">
+                    <input type="text" id="descricao" placeholder="Opcional">
                 </label>
-                <button type="submit">Adicionar</button>
+                <button type="submit">Salvar</button>
             </form>
         </section>
 
-        <!-- Tabela de despesas -->
-         <section>
+        <!-- Tabela de Despesas -->
+        <section>
             <h2>Despesas</h2>
             <table>
                 <thead>
                     <tr>
                         <th>Data</th>
-                        <th>categoria</th>
-                        <th>valor (R$)</th>
+                        <th>Categoria</th>
+                        <th>Valor (R$)</th>
                         <th>Descrição</th>
                         <th>Ações</th>
                     </tr>
@@ -50,13 +51,38 @@
                     <!-- Dados aparecem aqui -->
                 </tbody>
             </table>
-         </section>
+        </section>
 
-         <!--Total de Gastos-->
-         <section class="tota-section">
+        <!-- Total de Gastos -->
+        <section class="total-section">
             <h2>Total de Gastos: R$ <span id="total">0.00</span></h2>
-         </section>
+        </section>
     </main>
+
+    <!-- Filtros -->
+    <section>
+        <h2>Filtros</h2>
+        <div id="filtros">
+            <label>Mês:
+                <input type="month" id="filtroMes">
+            </label>
+            <label>Categoria:
+                <input type="text" id="filtroCategoria" placeholder="Ex.: Alimentação">
+            </label>
+            <button onclick="aplicarFiltros()">Filtrar</button>
+            <button onclick="limparFiltros()">Limpar</button>
+        </div>
+    </section>
+
+    <!-- Gráficos -->
+    <section>
+        <h2>Relatório de Gastos por Categoria</h2>
+        <canvas id="graficoCategoria" width="400" height="200"></canvas>
+
+        <h2>Gastos por Mês</h2>
+        <canvas id="graficoMensal" width="400" height="200"></canvas>
+    </section>
+
     <script src="script.js"></script>
 </body>
 </html>
